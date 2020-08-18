@@ -25,17 +25,18 @@ while (trainScan.hasNext()) {
 	String aData = trainScan.nextLine();
 	String[] aData1 = aData.split(",");
 
-Double.parseDouble(aData1[0]);
+//Double.parseDouble(aData1[0]);
 double S_LENGTH = Double.parseDouble(aData1[0]);
 System.out.println(S_LENGTH);
 //String S_WIDTH = aData1[1];
-Double.parseDouble(aData1[1]);
+//Double.parseDouble(aData1[1]);
 double S_WIDTH = Double.parseDouble(aData1[1]);
 System.out.println(S_WIDTH);
 //String[] P_LENGTH = aData1[2];
 //String[] P_WIDTH = aData1[3];
 //String[] clas = aData1[4];
-//double[][] sepal = {S_LENGTH};
+double[][] sepal = {Double.parseDouble(aData1[0]),
+					Double.parseDouble(aData1[1])};
 }
 
 
