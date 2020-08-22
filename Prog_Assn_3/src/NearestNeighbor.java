@@ -24,17 +24,25 @@ public class NearestNeighbor {
 			String aData = trainScan.nextLine();
 			
 			String[] aData1 = aData.split(",");
-			double [][] train_dat = new double[74][3];
-		 for (int i = 0; i < aData1.length; i++)
-			 for (int j = 0; j < aData1[0].length(); j++)
+				
+			String[] aData2 = aData1[0].split(",");
+			String aData2_1 = Arrays.toString(aData2);
+			
+			//final double s_len = Double.parseDouble(aData1[0]);
+			//final double s_wid = Double.parseDouble(aData1[1]);
+			//final double p_len = Double.parseDouble(aData1[2]);
+			//final double p_wid = Double.parseDouble(aData1[3]);
+			
+			double[] s_l = new double[75];
+			for(int i = 0; i < s_l.length; i++)
+				s_l[i] = Double.parseDouble(aData2_1);
+				System.out.println(s_l);
 			
 			
 			
-			
-						
-//double[][] train_dat = {{s_len, s_wid, p_len, p_wid}};
-		System.out.print(train_dat);
-		 System.out.println();
+				
+		//double[][] train_dat = {{s_len, s_wid, p_len, p_wid}};
+		//System.out.println(s_len);		
 			}
 		
 // making arrays for testing data -------------------------------------------------------------------
