@@ -3,83 +3,85 @@ import java.io.*;
 import java.util.Arrays;
 
 public class NearestNeighbor {
-	static double s_len, s_wid, p_len, p_wid;
+	Scanner testing = new Scanner(System.in);
+	Scanner training = new Scanner(System.in);
+
+//System.out.print("Enter the name for the training file: ");
+	String trainingFile = "/Users/kipbrower/Desktop/iris-training-data.csv";
+//System.out.print("Enter the name for the testing file: ");
+	String testingFile = "/Users/kipbrower/Desktop/iris-testing-data.csv";
+	static File testingData = new File("/Users/kipbrower/Desktop/iris-testing-data.csv");
+	static File trainingData = new File("/Users/kipbrower/Desktop/iris-training-data.csv");
+	
+	double dist;
+	double[][] s_l = new double[75][4];
+	int track = 0;
+	double train;
+	String class_t;
+	String[] classTrain = new String[75];
+	double[][] a_l = new double[75][4];
+	int track_e = 0;
+	double test;
+	String class_test;
+	String[] classTest = new String[75];
+	
 
 	public static void main(String[] args) throws FileNotFoundException {
-
-		Scanner testing = new Scanner(System.in);
-		Scanner training = new Scanner(System.in);
-	
-//System.out.print("Enter the name for the training file: ");
-		String trainingFile = "/Users/kipbrower/Desktop/iris-training-data.csv";
-//System.out.print("Enter the name for the testing file: ");
-		String testingFile = "/Users/kipbrower/Desktop/iris-testing-data.csv";
-		File testingData = new File("/Users/kipbrower/Desktop/iris-testing-data.csv");
-		File trainingData = new File("/Users/kipbrower/Desktop/iris-training-data.csv");
-		Scanner trainScan = new Scanner(trainingData);
-		Scanner testScan = new Scanner(testingData);
-
-		// String [] aData1;
-// making arrays for training data ----------------------------------------------------------------
-		if (trainScan.hasNext()) {
-			String aData = trainScan.nextLine();
-
-			//for (int i=0; i < aData.length()-1; i++)
-			System.out.println(aData.length());
-				
 		
-				
-			
-			
-			//String[] aData1 = aData.split(",");
-
 		
-		// String[] aData2 = aData1[0].split(",");
-		//double[][] s_l = new double[4][75];
-		//for (int i = 0; i < aData1.length - 1; i++)
-		//	for (int j = 0; j < aData1[0].length(); j++)
-			
-		
-		//System.out.println();
-		//String aData_1 = Arrays.deepToString(aData);
-		//double [] aData2_1 = Double.parseDouble(aData2_a);
-
-		// final double s_len = Double.parseDouble(aData1[0]);
-		// final double s_wid = Double.parseDouble(aData1[1]);
-		// final double p_len = Double.parseDouble(aData1[2]);
-		// final double p_wid = Double.parseDouble(aData1[3]);
-
-		// double[] s_l = new double[75];
-		// for(int i = 0; i < s_l.length; i++)
-		// s_l[i] = Double.parseDouble(aData2_1);
-		// System.out.println(aData1[0]);
-
-		// double[][] train_dat = {{s_len, s_wid, p_len, p_wid}};
-		// System.out.println(s_len);
 	}
 
+		// making arrays for training
+		// data----------------------------------------------------------------
+		public  void trainData() throws FileNotFoundException {
+			Scanner trainScan = new Scanner(trainingData);
+			while (trainScan.hasNext()) {
+			String aData = trainScan.nextLine();
+
+			String[] aData1 = aData.split(",");
+			for (int i = 0; i < aData1.length - 1; i++) {
+				train = Double.parseDouble(aData1[i]);
+				s_l[track][i] = train;
+
+				for (int k = 4; k < aData1.length; k++) {
+					class_t = aData1[k];
+					classTrain[track] = class_t;
+
+				}
+
+			}
+			track++;
+			System.out.println();}
+			}
+
+		
+	
 // making arrays for testing data -------------------------------------------------------------------
+		
+		public void testData() throws FileNotFoundException {
+			Scanner testScan = new Scanner(testingData);
+	
+		while (testScan.hasNext()) {
+			String bData = testScan.nextLine();
 
-	/*
-	 * while (testScan.hasNext()) { String bData = testScan.nextLine(); String[]
-	 * bData1 = bData.split(","); final double bS_LENGTH =
-	 * Double.parseDouble(bData1[0]); final double bS_WIDTH =
-	 * Double.parseDouble(bData1[1]); final double bP_LENGTH =
-	 * Double.parseDouble(bData1[2]); final double bP_WIDTH =
-	 * Double.parseDouble(bData1[3]); String[] test_class = {bData1[4]}; double[][]
-	 * test_dat = { { Double.parseDouble(bData1[0]) }, {
-	 * Double.parseDouble(bData1[1]) }, { Double.parseDouble(bData1[2]) }, {
-	 * Double.parseDouble(bData1[3]) } };
-	 * 
-	 * for (int row = 0; row < test_dat.length; row++) { for (int col = 0; col <
-	 * test_dat[row].length; col++) System.out.println(test_dat[row][col]);
-	 * System.out.println(); }
-	 * 
-	 * double sepal_l = Math.pow((aS_LENGTH - bS_LENGTH), 2); double sepal_w =
-	 * Math.pow((aS_WIDTH - bS_WIDTH), 2); double petal_l = Math.pow((aP_LENGTH -
-	 * bP_LENGTH), 2); double petal_w = Math.pow((aP_WIDTH - bP_WIDTH), 2); double
-	 * dist = Math.sqrt((sepal_l) +(sepal_w) + (petal_l) + (petal_w));
-	 * System.out.println(dist);
-	 */
+			String[] bData1 = bData.split(",");
+			for (int j = 0; j < bData1.length - 1; j++) {
+				test = Double.parseDouble(bData1[j]);
+				a_l[track_e][j] = test;
 
-}}
+				for (int l = 4; l < bData1.length; l++) {
+					class_test = bData1[l];
+					classTest[track_e] = class_test;
+				}
+
+			}
+			track_e++;
+		}
+		System.out.println();
+		dist = Math.sqrt(Math.pow((train - test),2));
+		System.out.println(dist);
+	}
+
+
+	
+	}
